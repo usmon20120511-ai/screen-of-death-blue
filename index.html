@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>System Error</title>
+  </head>
+  <body
+    class="bg-[#0078d7] text-white font-sans min-h-screen flex items-center justify-center p-10 overflow-hidden cursor-none"
+  >
+    <div class="max-w-5xl w-full space-y-8 select-none">
+      <div class="text-[120px] leading-none">:(</div>
+
+      <div class="text-2xl md:text-3xl font-light leading-relaxed">
+        На вашем устройстве возникла проблема, и его необходимо перезагрузить.
+        Мы лишь собираем некоторые сведения об ошибке, а затем будет выполнена
+        перезагрузка.
+      </div>
+
+      <div class="text-2xl md:text-3xl font-light">
+        <span id="percentage">0</span>% завершено
+      </div>
+
+      <div class="flex flex-col md:flex-row items-start gap-8 pt-4">
+        <div class="bg-white p-2 w-32 h-32 flex-shrink-0">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://windows.com/stopcode"
+            alt="QR Code"
+          />
+        </div>
+
+        <div class="space-y-2 text-sm md:text-base">
+          <p>
+            При желании вы можете найти в Интернете дополнительные сведения по
+            этому коду ошибки:
+          </p>
+          <p class="font-semibold">ERROR 404</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Простая анимация процентов для реализма
+      let count = 0;
+      const counterElement = document.getElementById("percentage");
+      const interval = setInterval(() => {
+        count += Math.floor(Math.random() * 10);
+        if (count >= 100) {
+          count = 100;
+          clearInterval(interval);
+        }
+        counterElement.innerText = count;
+      }, 2000);
+    </script>
+  </body>
+</html>
